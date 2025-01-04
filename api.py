@@ -36,12 +36,6 @@ def q405(e):
     data = {"Message":"An error has occurred."}
     return jsonify(data), 500
 
-@app.route("/cdn/config/LoadingScreenTipData", methods=["GET"])
-def cdnconfigLoadingScreenTipData():
-    with open(f"{data.saveDataPath}LoadingScreenTipData.json") as f:
-        ldata = json.load(f)
-    return jsonify(ldata)
-
 @app.route("/api/versioncheck/v4", methods=["GET"])
 def apiversioncheckv4():
     return jsonify({"VersionStatus":0})

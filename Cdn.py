@@ -51,6 +51,23 @@ def img(imgName):
             data1 = {'Content-Signature': f'key-id=KEY:RSA:p1.rec.net; data={hasj}'}
             return Response(img__, 200, content_type="image/png", headers=data1)
         return Response(imgg.content, 200, content_type="image/png", headers=data1)
+    
+@app.route("/cdn/config/LoadingScreenTipData", methods=["GET"])
+def cdnconfigLoadingScreenTipData():
+    print("Downloading LoadingScreenTipData")
+    fff = requests.request("GET", f"{data.dataUrl}LoadingScreenTipData.json")
+    print("Done downloading LoadingScreenTipData config")
+    if fff.status_code != 200:
+        print(f"ERROR HTTP: {fff.status_code}")
+        input()
+        sys.exit()
+    try:
+        LoadingScreenTipData = fff.json()
+    except:
+        print(f"ERROR JSON: 0001")
+        input()
+        sys.exit()
+    return jsonify(LoadingScreenTipData)
 
 def run():
     Port = 5003
