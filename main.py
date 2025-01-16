@@ -1,7 +1,7 @@
 import colorama
 from colorama import Fore
 colorama.init()
-print(f"{Fore.MAGENTA} Starting")
+print(f"{Fore.MAGENTA}Starting")
 #import api, notify, Matchmaking
 import threading
 import ProgramUtils

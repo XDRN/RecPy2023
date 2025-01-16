@@ -19,6 +19,8 @@ import Matchmaking
 
 import data
 
+savedata = data.saveDataPath
+
 room_API.init()
 
 room_API.loadRooms()
@@ -113,7 +115,9 @@ def apiaccountsv1accountme():
 @app.route("/api/notify/v1/hub/v1/negotiate", methods=["POST"])
 def apiotifyv1hubv1negotiate():
     Authorization = request.headers.get("Authorization")
-    url2 = f"https://127.0.0.1:5001/"
+    with open(f"{savedata}ip.txt") as f:
+        ip2 = f.read()
+    url2 = f"https://{ip2}:5001/"
     data = {
         "negotiateVersion":0,
         "SupportedTransports":[],
@@ -292,7 +296,10 @@ def apieconv1apiequipmentv2getUnlocked():
 
 @app.route("/api/econ/v1/api/consumables/v2/getUnlocked", methods=["GET"])
 def apieconv1apiconsumablesv2getUnlocked():
-    return jsonify([])
+    with open(f"{data.saveDataPath}Consumables.json") as f:
+        ejrgrg = json.load(f)
+    return jsonify(ejrgrg)
+
 
 @app.route("/api/econ/v1/api/avatar/v2/gifts", methods=["GET"])
 def apieconv1apiavatav2gift():

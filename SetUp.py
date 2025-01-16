@@ -4,6 +4,7 @@ import json
 import requests
 import random
 import sys
+import socket
 
 from RecNet import AvatarItemGen, Skins
 
@@ -30,6 +31,12 @@ def setUp():
         json.dump(gameconfigs, f, indent=2)
     with open(f"{data.saveDataPath}playersettings.json", "w") as f:
         json.dump([], f, indent=2)
+    with open(f"{data.saveDataPath}ip.txt", "w") as f:
+        with socket.socket(socket.AF_INET,socket.SOCK_DGRAM) as x:
+            x.connect(("8.8.8.8", 80))
+            ip = x.getsockname()[0]
+        #hostanme = socket.gethostname()
+        f.write(ip)
     playerId = random.randint(100, 9999999)
     name = f"RecPy#{playerId}"
     profileimageUrl = f"{data.dataUrl}ewqwqddwqwqddq.png"
