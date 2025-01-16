@@ -113,7 +113,7 @@ def apiaccountsv1accountme():
 @app.route("/api/notify/v1/hub/v1/negotiate", methods=["POST"])
 def apiotifyv1hubv1negotiate():
     Authorization = request.headers.get("Authorization")
-    url2 = f"https://192.168.1.95:5001/"
+    url2 = f"https://127.0.0.1:5001/"
     data = {
         "negotiateVersion":0,
         "SupportedTransports":[],

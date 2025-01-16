@@ -2,3 +2,7 @@
 *.pyc
 /SaveData
 /lolSaveData
+/dist
+/build
+*.spec
+*.7z

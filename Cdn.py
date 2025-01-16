@@ -52,7 +52,7 @@ def img(imgName):
             return Response(img__, 200, content_type="image/png", headers=data1)
         return Response(imgg.content, 200, content_type="image/png", headers=data1)
     
-@app.route("/cdn/config/LoadingScreenTipData", methods=["GET"])
+@app.route("/config/LoadingScreenTipData", methods=["GET"])
 def cdnconfigLoadingScreenTipData():
     print("Downloading LoadingScreenTipData")
     fff = requests.request("GET", f"{data.dataUrl}LoadingScreenTipData.json")
