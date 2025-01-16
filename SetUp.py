@@ -6,7 +6,7 @@ import random
 import sys
 import socket
 
-from RecNet import AvatarItemGen, Skins
+from RecNet import AvatarItemGen, Skins, ConsumableGen
 
 import ProgramUtils
 
@@ -14,8 +14,9 @@ def setUp():
     print("Setting up... (May take a minute to download everything.)")
     os.mkdir(f"{data.saveDataPath}")
     os.mkdir(f"{data.saveDataPath}Profile")
-    AvatarItemGen.gen("AvatarItemWardrobeRuntimeConfig.json", f"{data.saveDataPath}AvatarItems.json")
+    AvatarItemGen.gen("NotUsed", f"{data.saveDataPath}AvatarItems.json")
     Skins.gen(f"{data.saveDataPath}Equipments.json")
+    ConsumableGen.gen(f"{data.saveDataPath}Consumables.json")
     gameconfigs = requests.request("GET", f"{data.dataUrl}gameconfigs.json")
     if gameconfigs.status_code != 200:
         print(f"ERROR HTTP: {gameconfigs.status_code} on gameconfigs")

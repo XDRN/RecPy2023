@@ -35,8 +35,8 @@ def gen(writeFile: str):
             "Ids":[num],
             "CreatedAts":[ProgramUtils.getCurrentTime()],
             "ConsumableItemDesc":GenericConsumable["ConsumableItemDesc"],
-            "Count":4294967295,
-            "InitialCount":4294967295,
+            "Count":9999999,
+            "InitialCount":9999999,
             "IsActive":False,
             "ActiveDurationMinutes":None,
             "IsTransferable":False
@@ -49,8 +49,8 @@ def gen(writeFile: str):
             "Ids":[num],
             "CreatedAts":[ProgramUtils.getCurrentTime()],
             "ConsumableItemDesc":HairDyeConsumable["ConsumableItemDesc"],
-            "Count":4294967295,
-            "InitialCount":4294967295,
+            "Count":9999999,
+            "InitialCount":9999999,
             "IsActive":False,
             "ActiveDurationMinutes":None,
             "IsTransferable":False
@@ -63,8 +63,8 @@ def gen(writeFile: str):
             "Ids":[num],
             "CreatedAts":[ProgramUtils.getCurrentTime()],
             "ConsumableItemDesc":CouponConsumable["ConsumableItemDesc"],
-            "Count":4294967295,
-            "InitialCount":4294967295,
+            "Count":9999999,
+            "InitialCount":9999999,
             "IsActive":False,
             "ActiveDurationMinutes":None,
             "IsTransferable":False
@@ -77,8 +77,8 @@ def gen(writeFile: str):
             "Ids":[num],
             "CreatedAts":[ProgramUtils.getCurrentTime()],
             "ConsumableItemDesc":HeadPotionConsumable["ConsumableItemDesc"],
-            "Count":4294967295,
-            "InitialCount":4294967295,
+            "Count":9999999,
+            "InitialCount":9999999,
             "IsActive":False,
             "ActiveDurationMinutes":None,
             "IsTransferable":False

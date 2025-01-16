@@ -6,3 +6,4 @@
 /build
 *.spec
 *.7z
+/TempSaveData
