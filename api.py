@@ -24,6 +24,9 @@ savedata = data.saveDataPath
 room_API.init()
 
 room_API.loadRooms()
+room_API.loadUnityAssets()
+
+#print(room_API.unityAssets)
 
 name = f"{__name__}.py"
 
@@ -414,6 +417,25 @@ def apicommunityboardv2current():
 @app.route("/api/auth/v1/role/<role>/<int:playerId>", methods=["GET"])
 def apiauthv1role(role, playerId):
     return jsonify(True)
+
+@app.route("/api/rooms/v1/rooms/<int:RoomId>/subrooms/<SubRoomId>/permissions", methods=["PUT"])
+def apiroomsvroomssubroomspermissions(RoomId, SubRoomId):
+    return jsonify({"success":True,"error":""})
+
+@app.route("/api/rooms/v1/unity_assets/<GUID>/<int:Target>/<int:Version>", methods=["GET"])
+def apiroomsv1unityassetsGUIDTargetVersion(GUID, Target, Version):
+    unitya = room_API.findUnityAsset(GUID)
+    if unitya is None:
+        return abort(404)
+    return jsonify(unitya)
+
+@app.route("/roomserver/unity_assets/<GUID>", methods=["GET"])
+def apiroomsv1unityassetsGUID(GUID):
+    return abort(404)#! not done
+    unitya = room_API.findUnityAsset(GUID)
+    if unitya is None:
+        return abort(404)
+    return jsonify(unitya)
 
 
 def run():

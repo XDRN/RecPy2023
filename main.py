@@ -30,10 +30,9 @@ def mainMenu():
     elif _input == 3:
         ProgramUtils.clearScreen()
         print("Starting")
-        import api, notify, Matchmaking, Cdn
+        import api, notify, Matchmaking
         threading.Thread(target=notify.run).start()
         threading.Thread(target=Matchmaking.run).start()
-        threading.Thread(target=Cdn.run).start()
         api.run()
 
 
