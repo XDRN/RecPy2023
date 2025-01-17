@@ -110,7 +110,7 @@ def loadRooms():
             "Accessibility":1,
             "CloningAllowed":False,
             "CreatedAt":ProgramUtils.getCurrentTime(),
-            "CreatorAccountId":playerId,
+            "CreatorAccountId":1,
             "CustomWarning":"",
             "DataBlob":None,
             "Description":room["Description"],
@@ -131,9 +131,14 @@ def loadRooms():
             "PromoImages":[],
             "Roles":[
                 {
-                    "AccountId":playerId,
+                    "AccountId":1,
                     "InvitedRole":0,
                     "Role":255
+                },
+                {
+                    "AccountId":playerId,
+                    "InvitedRole":0,
+                    "Role":30
                 }
             ],
             "RoomId":num,

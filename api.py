@@ -407,6 +407,10 @@ def apicommunityboardv2current():
         sys.exit()
     return jsonify(communityboard)
 
+@app.route("/api/auth/v1/role/<role>/<int:playerId>", methods=["GET"])
+def apiauthv1role(role, playerId):
+    return jsonify(True)
+
 
 def run():
     Port = 5000
