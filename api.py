@@ -300,6 +300,10 @@ def apieconv1apiconsumablesv2getUnlocked():
         ejrgrg = json.load(f)
     return jsonify(ejrgrg)
 
+@app.route("/api/econ/v1/api/consumables/v1/consume", methods=["POST"])
+def apieconv1apiconsumablesv1consume():
+    return jsonify("")
+
 
 @app.route("/api/econ/v1/api/avatar/v2/gifts", methods=["GET"])
 def apieconv1apiavatav2gift():
