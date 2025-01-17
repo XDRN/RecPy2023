@@ -25,15 +25,17 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] = "secret!"
 CORS(app)
 
+playerData = player_API.getmyPlayer()
+
 heartbeat = {
-    "playerId": 1,
+    "playerId": playerData["accountId"],
     "statusVisibility": 3,
     "platform": -1,
     "deviceClass": 0,
     "vrMovementMode": 0,
     "roomInstance": None,
     "lastOnline": None,
-    "isOnline": False,
+    "isOnline": True,
     "appVersion": "20221209"
 }
 
@@ -97,7 +99,7 @@ def matchmakedorm():
     Authorization = request.headers.get("Authorization")
     room = room_API.findRoom("DormRoom")
     roomInstanceId = random.randint(1, 999999999)
-    photonRoomId = "OldRecRoom2023-PROD-" + room["Name"] + str(room["SubRooms"][0]["SubRoomId"]) + str(room["RoomId"])
+    photonRoomId = "OldRecRoom2023-" + room["Name"] + str(room["SubRooms"][0]["SubRoomId"]) + str(room["RoomId"])
     roomInstance = {
         "roomInstanceId":roomInstanceId,
         "roomId":room["RoomId"],
@@ -110,7 +112,7 @@ def matchmakedorm():
         "name":name,
         "maxCapacity":4,
         "isFull":False,
-        "isPrivate":False,
+        "isPrivate":True,
         "isInProgress":False,
         "matchmakingPolicy":0
     }
@@ -131,7 +133,7 @@ def matchmakeId(RoomId):
     global heartbeat
     room = room_API.findRoomId(RoomId)
     roomInstanceId = random.randint(1, 999999999)
-    photonRoomId = "OldRecRoom2023-PROD-" + room["Name"] + str(room["SubRooms"][0]["SubRoomId"]) + str(room["RoomId"])
+    photonRoomId = "OldRecRoom2023-" + room["Name"] + str(room["SubRooms"][0]["SubRoomId"]) + str(room["RoomId"])
     roomInstance = {
         "roomInstanceId":roomInstanceId,
         "roomId":room["RoomId"],
@@ -144,7 +146,7 @@ def matchmakeId(RoomId):
         "name":name,
         "maxCapacity":4,
         "isFull":False,
-        "isPrivate":False,
+        "isPrivate":True,
         "isInProgress":False,
         "matchmakingPolicy":0
     }
