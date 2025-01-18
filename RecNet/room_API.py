@@ -64,11 +64,6 @@ def loadRooms():
                     "AccountId":1,
                     "InvitedRole":0,
                     "Role":255
-                },
-                {
-                    "AccountId":playerId,
-                    "InvitedRole":0,
-                    "Role":30
                 }
             ],
             "RoomId":num,
@@ -149,11 +144,6 @@ def loadRooms():
                     "AccountId":1,
                     "InvitedRole":0,
                     "Role":255
-                },
-                {
-                    "AccountId":playerId,
-                    "InvitedRole":0,
-                    "Role":30
                 }
             ],
             "RoomId":num,
