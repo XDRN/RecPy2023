@@ -16,6 +16,7 @@ import jwt
 from RecNet import player_API, room_API
 
 import Matchmaking
+import ProgramUtils
 
 import data
 
@@ -377,10 +378,96 @@ def apieconv1apigamerewardsv1pending():
 def apiroomsv1photon_access_token():
     dd = Matchmaking.getheartbeat()
     PhotonAccessToken = jwt.encode({"sub": str(playerId),"scope": "makerpen","aud": "gay"}, key="hey")
+    Permissions = [
+      {
+        "Permission": "CAN_USE_MAKER_PEN",
+        "Role": 0,
+        "Override": True,
+        "Type": 0,
+        "Value": "True"
+      },
+      {
+        "Permission": "CAN_USE_ROOM_RESET_BUTTON",
+        "Role": 0,
+        "Override": True,
+        "Type": 0,
+        "Value": "True"
+      },
+      {
+        "Permission": "CAN_USE_DELETE_ALL_BUTTON",
+        "Role": 0,
+        "Override": True,
+        "Type": 0,
+        "Value": "True"
+      },
+      {
+        "Permission": "CAN_SAVE_INVENTIONS",
+        "Role": 0,
+        "Override": True,
+        "Type": 0,
+        "Value": "True"
+      },
+      {
+        "Permission": "CAN_SPAWN_INVENTIONS",
+        "Role": 0,
+        "Override": True,
+        "Type": 0,
+        "Value": "True"
+      },
+      {
+        "Permission": "CAN_USE_PLAY_GIZMOS_TOGGLE",
+        "Role": 0,
+        "Override": True,
+        "Type": 0,
+        "Value": "True"
+      },
+      {
+        "Permission": "CAN_USE_MAKER_PEN",
+        "Role": 30,
+        "Override": True,
+        "Type": 0,
+        "Value": "True"
+      },
+      {
+        "Permission": "CAN_USE_ROOM_RESET_BUTTON",
+        "Role": 30,
+        "Override": True,
+        "Type": 0,
+        "Value": "True"
+      },
+      {
+        "Permission": "CAN_USE_DELETE_ALL_BUTTON",
+        "Role": 30,
+        "Override": True,
+        "Type": 0,
+        "Value": "True"
+      },
+      {
+        "Permission": "CAN_SAVE_INVENTIONS",
+        "Role": 30,
+        "Override": True,
+        "Type": 0,
+        "Value": "True"
+      },
+      {
+        "Permission": "CAN_SPAWN_INVENTIONS",
+        "Role": 30,
+        "Override": True,
+        "Type": 0,
+        "Value": "True"
+      },
+      {
+        "Permission": "CAN_USE_PLAY_GIZMOS_TOGGLE",
+        "Role": 30,
+        "Override": True,
+        "Type": 0,
+        "Value": "True"
+      }
+    ]
     data = {
         "RoomInstanceId": dd["roomInstance"]["roomInstanceId"],
         "PhotonAccessToken": PhotonAccessToken,
-        "Permissions": []
+        "Permissions": Permissions
     }
     return jsonify(data)
 
@@ -436,6 +523,12 @@ def apiroomsv1unityassetsGUID(GUID):
     if unitya is None:
         return abort(404)
     return jsonify(unitya)
+
+@app.route("/api/images/v4/uploadsaved", methods=["POST"])
+def apiimagesv4uploadsaved():
+    name = f"{str(random.randint(100, 999999))}.png"
+    request.files["image"].save(f"SaveData\\img\\{name}")
+    return jsonify({"ImageName": name})
 
 
 def run():
