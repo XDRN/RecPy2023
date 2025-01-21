@@ -325,8 +325,8 @@ def apicustomAvatarItemsv1isRenderingEnabled():
 def apiimagesv2named():
     return jsonify([])
 
-@app.route("/api/sanitize/v1/isPure", methods=["GET"])
-def apiimagesv2named():
+@app.route("/api/sanitize/v1/isPure", methods=["POST"])
+def apisanitizev1ispure():
     return jsonify({"isPure":True})
 
 @app.route("/api/playerevents/v1/all", methods=["GET"])
