@@ -12,6 +12,7 @@ import base64
 import sys
 from enum import Enum
 import jwt
+import socket
 
 from RecNet import player_API, room_API
 
@@ -119,8 +120,9 @@ def apiaccountsv1accountme():
 @app.route("/api/notify/v1/hub/v1/negotiate", methods=["POST"])
 def apiotifyv1hubv1negotiate():
     Authorization = request.headers.get("Authorization")
-    with open(f"{savedata}ip.txt") as f:
-        ip2 = f.read()
+    with socket.socket(socket.AF_INET,socket.SOCK_DGRAM) as x:
+        x.connect(("8.8.8.8", 80))
+        ip2 = x.getsockname()[0]
     url2 = f"https://{ip2}:5001/"
     data = {
         "negotiateVersion":0,
@@ -290,7 +292,16 @@ def apiroomsv1roomsownedbyme():
 
 @app.route("/api/econ/v1/api/avatar/v3/saved", methods=["GET"])
 def apieconv1apiavatarv3saved():
-    return jsonify([])
+    slots = []
+    for x in os.listdir("SaveData\\Profile\\avatarSaved"):
+        x = str(x)
+        if x.endswith(".slot"):
+            print(x)
+    return jsonify(slots)
+
+@app.route("/api/econ/v1/api/avatar/v4/saved/set", methods=["GET"])
+def apieconv1apiavatarv4savedset():
+    return jsonify(""), 404
 
 @app.route("/api/econ/v1/api/equipment/v2/getUnlocked", methods=["GET"])
 def apieconv1apiequipmentv2getUnlocked():
