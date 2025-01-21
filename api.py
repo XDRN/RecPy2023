@@ -571,6 +571,10 @@ def apisanitizev1():
 def apisanitizev1ispure():
     return jsonify({"isPure":True})
 
+@app.route("/api/econ/v1/api/objectives/v1/updateobjective", methods=["POST"])
+def apieconv1apiobjectivesv1updateobjective():
+    return jsonify({"success":True,"value":None})
+
 
 def run():
     Port = 5000
