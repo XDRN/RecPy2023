@@ -297,11 +297,33 @@ def apieconv1apiavatarv3saved():
         x = str(x)
         if x.endswith(".slot"):
             print(x)
+            with open(f"SaveData\\Profile\\avatarSaved\\{x}") as f:
+                uyfgugufe = json.load(f)
+            uyfgugufe.update({
+                "Slot": int(x.split(".slot")[0])
+            })
+            slots.append(uyfgugufe)
     return jsonify(slots)
 
-@app.route("/api/econ/v1/api/avatar/v4/saved/set", methods=["GET"])
+@app.route("/api/econ/v1/api/avatar/v4/saved/set", methods=["POST"])
 def apieconv1apiavatarv4savedset():
-    return jsonify(""), 404
+    jsonData = request.get_json()
+    try:
+        Slot = jsonData["Slot"]
+    except:
+        return abort(400)
+    del jsonData["Slot"]
+    jsonData.update({
+        "PreviewImageName": "3vltmrmtk3vjyyqkqeln9hdnb.jpg"
+    })
+    with open(f"SaveData\\Profile\\avatarSaved\\{Slot}.slot", "w") as f:
+        json.dump(jsonData, f, indent=3)
+    data = {
+        "Slot": Slot,
+    }
+    data.update(jsonData)
+    print(data)
+    return jsonify(data), 200
 
 @app.route("/api/econ/v1/api/equipment/v2/getUnlocked", methods=["GET"])
 def apieconv1apiequipmentv2getUnlocked():

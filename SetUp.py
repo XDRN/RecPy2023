@@ -13,6 +13,7 @@ def setUp():
     print("Setting up... (May take a minute to download everything.)")
     os.mkdir(f"{data.saveDataPath}")
     os.mkdir(f"{data.saveDataPath}Profile")
+    os.mkdir(f"{data.saveDataPath}Profile\\avatarSaved")
     os.mkdir(f"{data.saveDataPath}img")
     AvatarItemGen.gen("NotUsed", f"{data.saveDataPath}AvatarItems.json")
     Skins.gen(f"{data.saveDataPath}Equipments.json")
