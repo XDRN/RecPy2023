@@ -530,6 +530,10 @@ def apiimagesv4uploadsaved():
     request.files["image"].save(f"SaveData\\img\\{name}")
     return jsonify({"ImageName": name})
 
+@app.route("/api/sanitize/v1", methods=["POST"])
+def apisanitizev1():
+    return jsonify(request.get_json()["Value"])
+
 
 def run():
     Port = 5000
