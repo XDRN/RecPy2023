@@ -325,10 +325,6 @@ def apicustomAvatarItemsv1isRenderingEnabled():
 def apiimagesv2named():
     return jsonify([])
 
-@app.route("/api/sanitize/v1/isPure", methods=["POST"])
-def apisanitizev1ispure():
-    return jsonify({"isPure":True})
-
 @app.route("/api/playerevents/v1/all", methods=["GET"])
 def apiplayereventsv1all():
     return jsonify({"Created": [], "Responses": []})
@@ -537,6 +533,10 @@ def apiimagesv4uploadsaved():
 @app.route("/api/sanitize/v1", methods=["POST"])
 def apisanitizev1():
     return jsonify(request.get_json()["Value"])
+
+@app.route("/api/sanitize/v1/isPure", methods=["POST"])
+def apisanitizev1ispure():
+    return jsonify({"isPure":True})
 
 
 def run():
