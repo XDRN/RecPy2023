@@ -408,7 +408,7 @@ def apieconv1apigamerewardsv1pending():
     return jsonify([])
 
 @app.route("/api/rooms/v1/photon_access_token", methods=["GET"])
-def apiroomsv1photon_access_token():
+def apiroomsv1photonaccesstoken():
     dd = Matchmaking.getheartbeat()
     PhotonAccessToken = jwt.encode({"sub": str(playerId),"scope": "makerpen","aud": "gay"}, key="hey")
     Permissions = [
