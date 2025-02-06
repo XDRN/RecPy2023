@@ -47,3 +47,6 @@ def gen(writeFile: str):
         json.dump(skinlist, f, indent=2)
 
     print(f"[{name}] Done")
+
+def getByPrefabNameAndModificationGuid(PrefabName: str, ModificationGuid: str):
+    pass

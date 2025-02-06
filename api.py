@@ -575,6 +575,29 @@ def apisanitizev1ispure():
 def apieconv1apiobjectivesv1updateobjective():
     return jsonify({"success":True,"value":None})
 
+@app.route("/api/econ/v1/api/equipment/v1/update", methods=["POST"])
+def apieconv1apiequipmentv1update():
+    return "I FUCKING HATE THIS"
+    print(request.get_json())
+    with open(f"{savedata}Equipments.json") as f:
+        Equipments = json.load(f)
+    gg = 1
+    for x in request.get_json():
+        for i in Equipments:
+            gg += 1
+            if i["PrefabName"] != x["PrefabName"]:
+                continue
+            if i["ModificationGuid"] != x["ModificationGuid"]:
+                continue
+            Id = gg
+            Id -= 1
+            print("Femboys2")
+            Equipments[Id]["Favorited"] = x["Favorited"]
+            break
+    with open(f"{savedata}Equipments.json", "w") as f:
+        json.dump(Equipments, f, indent=2)
+    return jsonify("OK")
+
 
 def run():
     Port = 5000
