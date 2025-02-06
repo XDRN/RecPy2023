@@ -13,13 +13,13 @@ if not os.path.exists(data.saveDataPath):
     SetUp.setUp()
 
 def mainMenu():
-    print(f"Rec.py2023 - Open source old RecRoom server for 2023. (Version:{ProgramUtils.getVersion()})\nMade by EggRecRoom")
+    print(f"Rec.py2023 - Open source old RecRoom server for 2023.\nMade by EggRecRoom")
     print(f"\n{Fore.RED}! Some Rooms Wont Load !{Fore.MAGENTA}")
-    print(f"\n\n1. Change Settings\n2. Modify Profile\n3. Start Server")
+    print(f"\n\n1. Modify Profile\n2. Start Server")
     ufgtftftfty = input()
     _input = int(ufgtftftfty)
     match _input:
-        case 3:
+        case 2:
             ProgramUtils.clearScreen()
             print("Starting")
             import api, notify, Matchmaking
