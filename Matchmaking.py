@@ -16,7 +16,7 @@ import jwt
 from RecNet import player_API, room_API
 import ProgramUtils
 
-import data
+import data, enums
 
 
 name = f"{__name__}.py"
@@ -122,7 +122,7 @@ def matchmakedorm():
         "isOnline": True
     })
     data1 = {
-        "errorCode": 0,
+        "errorCode": enums.roomJoinErrorCodes.Success.value,
         "roomInstance": roomInstance
     }
     print(data1)
@@ -156,7 +156,7 @@ def matchmakeId(RoomId):
         "isOnline": True
     })
     data1 = {
-        "errorCode": 0,
+        "errorCode": enums.roomJoinErrorCodes.Success.value,
         "roomInstance": roomInstance
     }
     print(data1)

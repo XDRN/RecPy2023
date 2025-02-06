@@ -19,7 +19,7 @@ from RecNet import player_API, room_API
 import Matchmaking
 import ProgramUtils
 
-import data
+import data, enums
 
 savedata = data.saveDataPath
 
@@ -414,84 +414,84 @@ def apiroomsv1photonaccesstoken():
     Permissions = [
       {
         "Permission": "CAN_USE_MAKER_PEN",
-        "Role": 0,
+        "Role": enums.roomRoles.None_.value,
         "Override": True,
         "Type": 0,
         "Value": "True"
       },
       {
         "Permission": "CAN_USE_ROOM_RESET_BUTTON",
-        "Role": 0,
+        "Role": enums.roomRoles.None_.value,
         "Override": True,
         "Type": 0,
         "Value": "True"
       },
       {
         "Permission": "CAN_USE_DELETE_ALL_BUTTON",
-        "Role": 0,
+        "Role": enums.roomRoles.None_.value,
         "Override": True,
         "Type": 0,
         "Value": "True"
       },
       {
         "Permission": "CAN_SAVE_INVENTIONS",
-        "Role": 0,
+        "Role": enums.roomRoles.None_.value,
         "Override": True,
         "Type": 0,
         "Value": "True"
       },
       {
         "Permission": "CAN_SPAWN_INVENTIONS",
-        "Role": 0,
+        "Role": enums.roomRoles.None_.value,
         "Override": True,
         "Type": 0,
         "Value": "True"
       },
       {
         "Permission": "CAN_USE_PLAY_GIZMOS_TOGGLE",
-        "Role": 0,
+        "Role": enums.roomRoles.None_.value,
         "Override": True,
         "Type": 0,
         "Value": "True"
       },
       {
         "Permission": "CAN_USE_MAKER_PEN",
-        "Role": 30,
+        "Role": enums.roomRoles.CoOwner.value,
         "Override": True,
         "Type": 0,
         "Value": "True"
       },
       {
         "Permission": "CAN_USE_ROOM_RESET_BUTTON",
-        "Role": 30,
+        "Role": enums.roomRoles.CoOwner.value,
         "Override": True,
         "Type": 0,
         "Value": "True"
       },
       {
         "Permission": "CAN_USE_DELETE_ALL_BUTTON",
-        "Role": 30,
+        "Role": enums.roomRoles.CoOwner.value,
         "Override": True,
         "Type": 0,
         "Value": "True"
       },
       {
         "Permission": "CAN_SAVE_INVENTIONS",
-        "Role": 30,
+        "Role": enums.roomRoles.CoOwner.value,
         "Override": True,
         "Type": 0,
         "Value": "True"
       },
       {
         "Permission": "CAN_SPAWN_INVENTIONS",
-        "Role": 30,
+        "Role": enums.roomRoles.CoOwner.value,
         "Override": True,
         "Type": 0,
         "Value": "True"
       },
       {
         "Permission": "CAN_USE_PLAY_GIZMOS_TOGGLE",
-        "Role": 30,
+        "Role": enums.roomRoles.CoOwner.value,
         "Override": True,
         "Type": 0,
         "Value": "True"
