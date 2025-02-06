@@ -7,3 +7,4 @@
 *.spec
 *.7z
 /TempSaveData
+/Deprecated

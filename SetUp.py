@@ -15,7 +15,7 @@ def setUp():
     os.mkdir(f"{data.saveDataPath}Profile")
     os.mkdir(f"{data.saveDataPath}Profile\\avatarSaved")
     os.mkdir(f"{data.saveDataPath}img")
-    AvatarItemGen.gen("NotUsed", f"{data.saveDataPath}AvatarItems.json")
+    AvatarItemGen.gen(f"{data.saveDataPath}AvatarItems.json")
     Skins.gen(f"{data.saveDataPath}Equipments.json")
     ConsumableGen.gen(f"{data.saveDataPath}Consumables.json")
     gameconfigs = requests.request("GET", f"{data.dataUrl}gameconfigs.json")
