@@ -1,1 +1,0 @@
-pyinstaller main.py -F -n RecPy2023
