@@ -598,6 +598,13 @@ def apieconv1apiequipmentv1update():
         json.dump(Equipments, f, indent=2)
     return jsonify("OK")
 
+@app.route("/api/accounts/v1/accountprivacysettings/<int:PlayerId>", methods=["GET"])
+def apiaccountsv1tprivacysettings_(PlayerId):
+    return jsonify({
+        "accountId": PlayerId,
+        "isRecentHistoryVisible": False
+    })
+
 
 def run():
     Port = 5000
