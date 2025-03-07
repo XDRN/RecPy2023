@@ -2,11 +2,7 @@ import subprocess
 import socket
 import datetime
 
-def getVersion():
-    return 0.1
-
-def getName():
-    return "Rec.py2023"
+Version = "0.1"
 
 
 def clearScreen():

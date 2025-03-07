@@ -605,6 +605,31 @@ def apiaccountsv1tprivacysettings_(PlayerId):
         "isRecentHistoryVisible": False
     })
 
+@app.route("/api/keepsakes/categories", methods=["GET"])
+def apikeepsakescategories():
+    data = {"Results":[{"KeepsakeCategoryId":0,"VisualId":"explore","LimitPerRoom":10,"XpValue":70,"IconOutlineImageName":None,"IconFilledImageName":None},{"KeepsakeCategoryId":0,"VisualId":"presents","LimitPerRoom":10,"XpValue":70,"IconOutlineImageName":None,"IconFilledImageName":None},{"KeepsakeCategoryId":0,"VisualId":"purple_core","LimitPerRoom":10,"XpValue":70,"IconOutlineImageName":None,"IconFilledImageName":None}],"TotalResults":0}
+    return jsonify(data)
+
+@app.route("/api/progressionEvents/active", methods=["GET"])
+def apiprogressionEventsactiv():
+    data = None
+    return jsonify(data)
+
+@app.route("/api/keepsakes/globalconfig", methods=["GET"])
+def apikeepsakesglobalconfig():
+    data = {"KeepsakeFeatureEnabled":True,"KeepsakeRoomLimit":9999,"SocialXpBoostEnabled":True}
+    return jsonify(data)
+
+@app.route("/api/keepsakes/rooms/<int:RoomId>", methods=["GET"])
+def apikeepsakesroom(RoomId):
+    data = {"Instances":[],"CollectionRecords":[],"KeepsakeProgressionEventIds":[]}
+    return jsonify(data)
+
+@app.route("/api/keepsakes", methods=["POST"])
+def apikeepsakes():
+    data = {"success": True}
+    return jsonify(data)
+
 
 def run():
     Port = 5000

@@ -13,7 +13,7 @@ if not os.path.exists(data.saveDataPath):
     SetUp.setUp()
 
 def mainMenu():
-    print(f"Rec.py2023 - Open source old RecRoom server for 2023.\nMade by EggRecRoom")
+    print(f"Rec.py2023 - Open source old RecRoom server for 2023 ({ProgramUtils.Version}).\nMade by EggRecRoom")
     print(f"\n{Fore.RED}! Some Rooms Wont Load !{Fore.MAGENTA}")
     print(f"\n\n1. Modify Profile\n2. Start Server")
     ufgtftftfty = input()
