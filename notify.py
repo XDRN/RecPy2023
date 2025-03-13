@@ -13,6 +13,7 @@ import base64
 import sys
 from enum import Enum
 import jwt
+webNotify = None
 
 from RecNet import player_API
 
@@ -29,6 +30,10 @@ CORS(app)
 def q405(e):
     data = {"Message":"An error has occurred."}
     return jsonify(data), 500
+
+@app.route("/web", methods=["GET"])
+def web():
+    return render_template("socket.html")
 
 @app.route("/negotiate", methods=["POST"])
 def negotiate():
@@ -49,7 +54,9 @@ def negotiate():
 
 @sock.route("/")
 def notify(ws):
+    global webNotify
     while True:
+        webNotify = ws
         data = ws.receive()
         print(f"[{name}] received data: " + str(data))
         sentdata = data

@@ -2,7 +2,9 @@ import subprocess
 import socket
 import datetime
 
-Version = "0.1"
+Version = "WebSocket Test 0.1"
+
+Branch = "Test-WebSockets"
 
 
 def clearScreen():
