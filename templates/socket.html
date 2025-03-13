@@ -9,7 +9,22 @@
 </head>
 <body>
 
-    <button type="button" class="btn btn-primary">Primary</button>
+    <form action="https://localhost:5001/api/socket/send" method="post">
+        <div class="form-group">
+            <span class="input-group-text" id="inputGroup-sizing-default">type</span>
+            <select id="type" name="type" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                {% for x in websockettypes %}
+                  <option value="{{x["id"]}}">{{x["friendlyName"]}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <br>
+        <div id="form-group">
+            <span class="input-group-text" id="inputGroup-sizing-default">msg json data</span>
+            <textarea  id="msg" name="msg" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send to RecRoom</button>
+    </form>
     
 </body>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
