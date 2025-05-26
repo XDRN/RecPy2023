@@ -2,7 +2,7 @@ import subprocess
 import socket
 import datetime
 
-Version = "0.1"
+Version = "0.1-keepsake-testing"
 
 
 def clearScreen():
