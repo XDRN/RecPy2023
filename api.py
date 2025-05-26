@@ -14,7 +14,7 @@ from enum import Enum
 import jwt
 import socket
 
-from RecNet import player_API, room_API
+from RecNet import player_API, room_API, keepsake_API
 
 import Matchmaking
 import ProgramUtils
@@ -604,32 +604,428 @@ def apiaccountsv1tprivacysettings_(PlayerId):
         "accountId": PlayerId,
         "isRecentHistoryVisible": False
     })
-
 @app.route("/api/keepsakes/categories", methods=["GET"])
 def apikeepsakescategories():
-    data = {"Results":[{"KeepsakeCategoryId":0,"VisualId":"explore","LimitPerRoom":10,"XpValue":70,"IconOutlineImageName":None,"IconFilledImageName":None},{"KeepsakeCategoryId":0,"VisualId":"presents","LimitPerRoom":10,"XpValue":70,"IconOutlineImageName":None,"IconFilledImageName":None},{"KeepsakeCategoryId":0,"VisualId":"purple_core","LimitPerRoom":10,"XpValue":70,"IconOutlineImageName":None,"IconFilledImageName":None}],"TotalResults":0}
+    data = {
+        "Results":[
+            {
+                "KeepsakeCategoryId":0,
+                "VisualId":"explore",
+                "LimitPerRoom":10,
+                "XpValue":70,
+                "IconOutlineImageName":None,
+                "IconFilledImageName":None
+            },
+            {
+                "KeepsakeCategoryId":2,
+                "VisualId":"presents",
+                "LimitPerRoom":10,
+                "XpValue":70,
+                "IconOutlineImageName":None,
+                "IconFilledImageName":None
+            },
+            {
+                "KeepsakeCategoryId":3,
+                "VisualId":"purple_core",
+                "LimitPerRoom":10,
+                "XpValue":70,
+                "IconOutlineImageName":None,
+                "IconFilledImageName":None
+            }
+        ],
+        "TotalResults":0
+    }
     return jsonify(data)
 
+@app.route("/api/progressionEvents/event/<int:RoomId>", methods=["GET"])
+def api_progressionEvents_event(RoomId):
+    data = {
+    "ProgressionEventId": 2,
+    "Name": "Coming in Hot! Progression Event Alpha",
+    "IsEnabled": True,
+    "Rewards": [{
+        "ProgressionEventRewardId": 1,
+        "ProgressionEventId": 2,
+        "GiftDropId": 3798,
+        "ImageName": "7w7xumgr5rtaouze5e5lwspea.png",
+        "ImageStream": None,
+        "ImageContentType": None,
+        "Xp": 30,
+        "RewardIndex": 0,
+        "IsBonus": False,
+        "IsRRPlusExclusive": False
+    }, {
+        "ProgressionEventRewardId": 2,
+        "ProgressionEventId": 2,
+        "GiftDropId": 3779,
+        "ImageName": "eynegc0nils797wgjqz96a2ds.png",
+        "ImageStream": None,
+        "ImageContentType": None,
+        "Xp": 60,
+        "RewardIndex": 1,
+        "IsBonus": False,
+        "IsRRPlusExclusive": False
+    }, {
+        "ProgressionEventRewardId": 3,
+        "ProgressionEventId": 2,
+        "GiftDropId": 3025,
+        "ImageName": "2ikt2bx6xwiyyr6s8qducxjr1.png",
+        "ImageStream": None,
+        "ImageContentType": None,
+        "Xp": 90,
+        "RewardIndex": 2,
+        "IsBonus": False,
+        "IsRRPlusExclusive": False
+    }, {
+        "ProgressionEventRewardId": 4,
+        "ProgressionEventId": 2,
+        "GiftDropId": 4079,
+        "ImageName": "dziv7z4fwbejheoy7yvrjlby1.png",
+        "ImageStream": None,
+        "ImageContentType": None,
+        "Xp": 130,
+        "RewardIndex": 3,
+        "IsBonus": False,
+        "IsRRPlusExclusive": False
+    }, {
+        "ProgressionEventRewardId": 6,
+        "ProgressionEventId": 2,
+        "GiftDropId": 4078,
+        "ImageName": "6fepaaug17ai3guqpazy3v86o.png",
+        "ImageStream": None,
+        "ImageContentType": None,
+        "Xp": 180,
+        "RewardIndex": 4,
+        "IsBonus": False,
+        "IsRRPlusExclusive": False
+    }, {
+        "ProgressionEventRewardId": 7,
+        "ProgressionEventId": 2,
+        "GiftDropId": 3974,
+        "ImageName": "7958ooqtj2o04rkcdqtyb3rko.png",
+        "ImageStream": None,
+        "ImageContentType": None,
+        "Xp": 250,
+        "RewardIndex": 5,
+        "IsBonus": False,
+        "IsRRPlusExclusive": False
+    }],
+    "KeepsakeRoomLists": [{
+        "KeepsakeRoomListId": 1,
+        "ProgressionEventId": 3,
+        "UnlockItemAvatarItemId": None,
+        "UnlockItemGiftDropId": None,
+        "UnlockItemLockDurationTicks": None,
+        "KeepsakeRooms": [{
+            "KeepsakeRoomId": 1,
+            "RoomId": 1,
+            "KeepsakeRoomListId": 1,
+            "Type": 0,
+            "Order": 7
+        }, {
+            "KeepsakeRoomId": 2,
+            "RoomId": 2,
+            "KeepsakeRoomListId": 1,
+            "Type": 0,
+            "Order": 8
+        }, {
+            "KeepsakeRoomId": 3,
+            "RoomId": 3,
+            "KeepsakeRoomListId": 1,
+            "Type": 0,
+            "Order": 9
+        }, {
+            "KeepsakeRoomId": 4,
+            "RoomId": 4,
+            "KeepsakeRoomListId": 1,
+            "Type": 0,
+            "Order": 10
+        }, {
+            "KeepsakeRoomId": 5,
+            "RoomId": 5,
+            "KeepsakeRoomListId": 1,
+            "Type": 0,
+            "Order": 11
+        }, {
+            "KeepsakeRoomId": 6,
+            "RoomId": 6,
+            "KeepsakeRoomListId": 1,
+            "Type": 0,
+            "Order": 12
+        }, {
+            "KeepsakeRoomId": 7,
+            "RoomId": 7,
+            "KeepsakeRoomListId": 1,
+            "Type": 0,
+            "Order": 13
+        }, {
+            "KeepsakeRoomId": 8,
+            "RoomId": 8,
+            "KeepsakeRoomListId": 1,
+            "Type": 0,
+            "Order": 14
+        }, {
+            "KeepsakeRoomId": 11,
+            "RoomId": 9,
+            "KeepsakeRoomListId": 1,
+            "Type": 0,
+            "Order": 15
+        }, {
+            "KeepsakeRoomId": 12,
+            "RoomId": 10,
+            "KeepsakeRoomListId": 1,
+            "Type": 0,
+            "Order": 16
+        }, {
+            "KeepsakeRoomId": 13,
+            "RoomId": 11,
+            "KeepsakeRoomListId": 1,
+            "Type": 0,
+            "Order": 17
+        }, {
+            "KeepsakeRoomId": 14,
+            "RoomId": 12,
+            "KeepsakeRoomListId": 1,
+            "Type": 0,
+            "Order": 18
+        }, {
+            "KeepsakeRoomId": 15,
+            "RoomId": 13,
+            "KeepsakeRoomListId": 1,
+            "Type": 0,
+            "Order": 19
+        }, {
+            "KeepsakeRoomId": 22,
+            "RoomId": 14,
+            "KeepsakeRoomListId": 1,
+            "Type": 0,
+            "Order": 6
+        }, {
+            "KeepsakeRoomId": 23,
+            "RoomId": 15,
+            "KeepsakeRoomListId": 1,
+            "Type": 0,
+            "Order": 5
+        }, {
+            "KeepsakeRoomId": 24,
+            "RoomId": 16,
+            "KeepsakeRoomListId": 1,
+            "Type": 0,
+            "Order": 4
+        }, {
+            "KeepsakeRoomId": 25,
+            "RoomId": 17,
+            "KeepsakeRoomListId": 1,
+            "Type": 0,
+            "Order": 3
+        }, {
+            "KeepsakeRoomId": 26,
+            "RoomId": 18,
+            "KeepsakeRoomListId": 1,
+            "Type": 0,
+            "Order": 2
+        }, {
+            "KeepsakeRoomId": 27,
+            "RoomId": 29,
+            "KeepsakeRoomListId": 1,
+            "Type": 0,
+            "Order": 1
+        }, {
+            "KeepsakeRoomId": 28,
+            "RoomId": 20,
+            "KeepsakeRoomListId": 1,
+            "Type": 0,
+            "Order": 0
+        }, {
+            "KeepsakeRoomId": 37,
+            "RoomId": 21,
+            "KeepsakeRoomListId": 1,
+            "Type": 0,
+            "Order": 20
+        }],
+        "RoomUnlockStartOffsetTicks": 0,
+        "RoomUnlockIntervalTicks": 0,
+        "RoomUnlockBatchSize": 0,
+        "RoomType": 0,
+        "UnlockItemLockDuration": None,
+        "RoomUnlockStartOffset": "00:00:00",
+        "RoomUnlockInterval": "00:00:00"
+    }, {
+        "KeepsakeRoomListId": 2,
+        "ProgressionEventId": 3,
+        "UnlockItemAvatarItemId": None,
+        "UnlockItemGiftDropId": None,
+        "UnlockItemLockDurationTicks": None,
+        "KeepsakeRooms": [{
+            "KeepsakeRoomId": 16,
+            "RoomId": 1,
+            "KeepsakeRoomListId": 2,
+            "Type": 1,
+            "Order": 5
+        }, {
+            "KeepsakeRoomId": 17,
+            "RoomId": 2,
+            "KeepsakeRoomListId": 2,
+            "Type": 1,
+            "Order": 6
+        }, {
+            "KeepsakeRoomId": 18,
+            "RoomId": 3,
+            "KeepsakeRoomListId": 2,
+            "Type": 1,
+            "Order": 7
+        }, {
+            "KeepsakeRoomId": 20,
+            "RoomId": 4,
+            "KeepsakeRoomListId": 2,
+            "Type": 1,
+            "Order": 8
+        }, {
+            "KeepsakeRoomId": 29,
+            "RoomId": 5,
+            "KeepsakeRoomListId": 2,
+            "Type": 1,
+            "Order": 4
+        }, {
+            "KeepsakeRoomId": 30,
+            "RoomId": 6,
+            "KeepsakeRoomListId": 2,
+            "Type": 1,
+            "Order": 3
+        }, {
+            "KeepsakeRoomId": 31,
+            "RoomId": 7,
+            "KeepsakeRoomListId": 2,
+            "Type": 1,
+            "Order": 2
+        }, {
+            "KeepsakeRoomId": 32,
+            "RoomId": 8,
+            "KeepsakeRoomListId": 2,
+            "Type": 1,
+            "Order": 1
+        }, {
+            "KeepsakeRoomId": 33,
+            "RoomId": 9,
+            "KeepsakeRoomListId": 2,
+            "Type": 1,
+            "Order": 0
+        }, {
+            "KeepsakeRoomId": 34,
+            "RoomId": 10,
+            "KeepsakeRoomListId": 2,
+            "Type": 1,
+            "Order": 9
+        }, {
+            "KeepsakeRoomId": 36,
+            "RoomId": 11,
+            "KeepsakeRoomListId": 2,
+            "Type": 1,
+            "Order": 10
+        }],
+        "RoomUnlockStartOffsetTicks": 0,
+        "RoomUnlockIntervalTicks": 0,
+        "RoomUnlockBatchSize": 0,
+        "RoomType": 1,
+        "UnlockItemLockDuration": None,
+        "RoomUnlockStartOffset": "00:00:00",
+        "RoomUnlockInterval": "00:00:00"
+    }],
+    "StartTime": "2022-09-13T23:00:00Z",
+    "EndTime": "9999-09-16T23:00:00Z",
+    "CollectionEndTime": "9999-09-17T23:00:00Z",
+    "UsesBoost": True,
+    "BoostDailyGameplayMinutesLimit": 20,
+    "BoostXpMultiplier": 3.0,
+    "PurchasableXpBoostId": None,
+    "ActiveExperiment": None,
+    "ChallengesIconImageName": None,
+    "RewardsPipImageName": None,
+    "EventInfoImageName": None
+}
+    return jsonify(data)
+
+@app.route("/api/progressionEvents/record/<int:RoomId>", methods=["GET"])
+def api_progressionEvents_record(RoomId):
+    data = {
+        "AccountId": 1,
+        "Xp": 0,
+        "GameMinutesToday": 0,
+        "RewardsCollected": 0,
+        "BonusRewardsCollected": 0,
+        "XpBoostLastPurchasedAt": None,
+        "PremiumRewardsCollected": 0
+    }
+    return jsonify(data)
+    
 @app.route("/api/progressionEvents/active", methods=["GET"])
 def apiprogressionEventsactiv():
-    data = None
+    data = 3000
     return jsonify(data)
 
 @app.route("/api/keepsakes/globalconfig", methods=["GET"])
 def apikeepsakesglobalconfig():
-    data = {"KeepsakeFeatureEnabled":True,"KeepsakeRoomLimit":9999,"SocialXpBoostEnabled":True}
+    data = {
+        "KeepsakeFeatureEnabled":True,
+        "KeepsakeRoomLimit":9999,
+        "SocialXpBoostEnabled":True
+    }
     return jsonify(data)
 
 @app.route("/api/keepsakes/rooms/<int:RoomId>", methods=["GET"])
 def apikeepsakesroom(RoomId):
-    data = {"Instances":[],"CollectionRecords":[],"KeepsakeProgressionEventIds":[]}
+    data = {
+        "CollectionRecords":
+        [
+            #{
+            #    "AccountId": 1,
+            #    "KeepsakeInstanceId": str(uuid4()),
+            #    "CollectedAt": ProgramUtils.getCurrentTime()
+            #}
+        ],
+        "Instances":
+        [
+            keepsake_API.find_keepsake_data(RoomId)
+        ],
+        "KeepsakeProgressionEventIds":
+        [
+            
+        ]
+    }
     return jsonify(data)
-
+    
+@app.route("/api/keepsakes/<Id>", methods=["DELETE"])
+def apikeepsakes_id(Id):
+    data = {
+        "success": True
+    }
+    return jsonify(data)
+    
 @app.route("/api/keepsakes", methods=["POST"])
 def apikeepsakes():
-    data = {"success": True}
+    print(request.get_json())
+    data1 = request.get_json()
+    data = {
+        "success": True,
+        "value": keepsake_API.add_keepsake_data(int(data1["RoomId"]), int(data1["SubRoomId"]), int(data1["KeepsakeCategory"]))
+    }
+    return jsonify(data)
+    
+#/api/keepsakes/events/2
+@app.route("/api/keepsakes/event/<Id>", methods=["POST"])
+def api_keepsakes_event_id():
+    print(request.get_json())
+    data = {
+        "success": True,
+    }
     return jsonify(data)
 
+@app.route("/api/keepsakes/events/<Id>", methods=["GET"])
+def api_keepsakes_events_id():
+    data = {
+        "success": True,
+    }
+    return jsonify(data)
 
 def run():
     Port = 5000
