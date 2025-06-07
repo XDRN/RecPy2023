@@ -1,3 +1,4 @@
+import uuid
 from flask import Flask, request, jsonify, send_file, redirect, make_response, url_for, render_template, Response, abort, session
 from flask_cors import CORS
 import asyncio
@@ -14,7 +15,7 @@ from enum import Enum
 import jwt
 import socket
 
-from RecNet import player_API, room_API
+from RecNet import player_API, room_API, Inventionmanager
 
 import Matchmaking
 import ProgramUtils
@@ -515,7 +516,20 @@ def apieconv1apichecklistv1current():
 
 @app.route("/api/inventions/v2/mine", methods=["GET"])
 def apiinventionsv2mine():
-    return jsonify([])
+    return jsonify(Inventionmanager.get_all_inventions())
+
+@app.route("/api/inventions/v6/save", methods=["POST"])
+def saveinvention():
+    data = request.get_json(force=True)
+    response = Inventionmanager.generate_invention_response(data)
+    return jsonify(response)
+
+@app.route("/api/inventions/v2/batch", methods=["GET"])
+def apiinventionsv2batch():
+    invention_id = int(request.args.get("id", 0))
+    response = Inventionmanager.get_invention_by_id(invention_id)
+    return jsonify(response)
+
 
 @app.route("/api/communityboard/v2/current", methods=["GET"])
 def apicommunityboardv2current():
@@ -562,6 +576,12 @@ def apiimagesv4uploadsaved():
     name = f"{str(random.randint(100, 999999))}.png"
     request.files["image"].save(f"SaveData\\img\\{name}")
     return jsonify({"ImageName": name})
+
+@app.route("/api/storage/v1/upload", methods=["POST"])
+def apistoragev1upload():
+    name = f"{str(uuid.uuid4())}"
+    request.files["File"].save(f"SaveData\\Uploads\\{name}")
+    return jsonify({"Filename": name})
 
 @app.route("/api/sanitize/v1", methods=["POST"])
 def apisanitizev1():
