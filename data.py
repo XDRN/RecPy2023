@@ -2,7 +2,7 @@
 
 saveDataPath = "SaveData\\"
 
-dataUrl = "https://eggrecroom.github.io/2023Data/"
+dataUrl = "https://xdrn.github.io/2023Data/"
 
 def getConfig():
     return {
